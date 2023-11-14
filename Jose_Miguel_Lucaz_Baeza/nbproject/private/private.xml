@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/encargo/Jose_Miguel_Lucaz_Baeza/src/vista/Ventana_Inicio.java</file>
-            <file>file:/F:/encargo/Jose_Miguel_Lucaz_Baeza/src/modelo/Vestido.java</file>
-            <file>file:/F:/encargo/Jose_Miguel_Lucaz_Baeza/src/modelo/Pantalon.java</file>
-            <file>file:/F:/encargo/Jose_Miguel_Lucaz_Baeza/src/modelo/Articulo.java</file>
-            <file>file:/F:/encargo/Jose_Miguel_Lucaz_Baeza/src/modelo/Polera.java</file>
+            <file>file:/C:/Users/el%20wn%20maricon/Downloads/pr/encargoJava/Jose_Miguel_Lucaz_Baeza/src/vista/Ventana_Agregar_Pantalon.java</file>
+            <file>file:/C:/Users/el%20wn%20maricon/Downloads/pr/encargoJava/Jose_Miguel_Lucaz_Baeza/src/controlador/ArticuloDAO.java</file>
+            <file>file:/C:/Users/el%20wn%20maricon/Downloads/pr/encargoJava/Jose_Miguel_Lucaz_Baeza/src/controlador/PantalonDAO.java</file>
+            <file>file:/C:/Users/el%20wn%20maricon/Downloads/pr/encargoJava/Jose_Miguel_Lucaz_Baeza/src/controlador/VestidoDAO.java</file>
+            <file>file:/C:/Users/el%20wn%20maricon/Downloads/pr/encargoJava/Jose_Miguel_Lucaz_Baeza/src/vista/Jose_Miguel_Lucaz_Baeza.java</file>
+            <file>file:/C:/Users/el%20wn%20maricon/Downloads/pr/encargoJava/Jose_Miguel_Lucaz_Baeza/src/modelo/Vestido.java</file>
+            <file>file:/C:/Users/el%20wn%20maricon/Downloads/pr/encargoJava/Jose_Miguel_Lucaz_Baeza/src/controlador/Conexion.java</file>
+            <file>file:/C:/Users/el%20wn%20maricon/Downloads/pr/encargoJava/Jose_Miguel_Lucaz_Baeza/src/vista/Ventana_Agregar_Vestido.java</file>
         </group>
     </open-files>
 </project-private>

@@ -185,8 +185,8 @@ public class Ventana_Agregar_Pantalon extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTalla, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jMaterial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtId)
-                                    .addComponent(txtNombre))))
+                                    .addComponent(txtNombre)
+                                    .addComponent(txtId))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -361,7 +361,8 @@ public class Ventana_Agregar_Pantalon extends javax.swing.JFrame {
             arDAO.ingresarArticulo(ar);
             panDAO.ingresarPantalon(pan);
             JOptionPane.showMessageDialog(this, "Pantalon ingresado");
-            
+        } else{
+            JOptionPane.showMessageDialog(this, "El id ya fue ingresado por favor ingrese otro");
         }
         
     }//GEN-LAST:event_btnIngresoActionPerformed

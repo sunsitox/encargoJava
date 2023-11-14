@@ -144,8 +144,8 @@
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jTalla" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jMaterial" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtId" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtId" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>

@@ -7,7 +7,11 @@ package vista;
 
 import controlador.ArticuloDAO;
 import controlador.PantalonDAO;
+import controlador.VestidoDAO;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import modelo.Articulo;
+import modelo.Vestido;
 
 /**
  *
@@ -15,11 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class Ventana_Agregar_Vestido extends javax.swing.JFrame {
 
+    Vestido ves;
+
     /**
      * Creates new form Ventana_Agregar_Vestido
      */
     public Ventana_Agregar_Vestido() {
         initComponents();
+
     }
 
     /**
@@ -31,6 +38,22 @@ public class Ventana_Agregar_Vestido extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jLabel4 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        rbtnSi = new javax.swing.JRadioButton();
+        rbtnNo = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        jBoxTela = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jBoxTalla = new javax.swing.JComboBox<>();
+        btnVolver = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtPrecio = new javax.swing.JTextField();
+        btnIngreso = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         opSalir = new javax.swing.JMenu();
         jMenu8 = new javax.swing.JMenu();
@@ -42,6 +65,75 @@ public class Ventana_Agregar_Vestido extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel4.setText("Id:");
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Nombre:");
+
+        jLabel1.setText("Diseño");
+
+        buttonGroup1.add(rbtnSi);
+        rbtnSi.setText("si");
+        rbtnSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnSiActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbtnNo);
+        rbtnNo.setText("nao nao");
+
+        jLabel2.setText("Tela");
+
+        jBoxTela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "seda cruda", "satén", "tafetán ", "terciopelo ", "encaje gasa de seda ", "organza." }));
+        jBoxTela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBoxTelaActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Talla");
+
+        jBoxTalla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "S", "M", "L", "XL" }));
+        jBoxTalla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBoxTallaActionPerformed(evt);
+            }
+        });
+
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Precio:");
+
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioActionPerformed(evt);
+            }
+        });
+
+        btnIngreso.setText("Ingresar");
+        btnIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresoActionPerformed(evt);
+            }
+        });
 
         opSalir.setText("Archivo");
 
@@ -96,11 +188,76 @@ public class Ventana_Agregar_Vestido extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnIngreso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 524, Short.MAX_VALUE)
+                        .addComponent(btnVolver)
+                        .addGap(240, 240, 240))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(143, 143, 143)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jBoxTela, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jBoxTalla, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5))
+                                .addGap(143, 143, 143)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(97, 97, 97)
+                                .addComponent(rbtnSi)
+                                .addGap(58, 58, 58)
+                                .addComponent(rbtnNo)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jBoxTela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jBoxTalla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(rbtnSi)
+                    .addComponent(rbtnNo))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolver)
+                    .addComponent(btnIngreso))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -140,12 +297,104 @@ public class Ventana_Agregar_Vestido extends javax.swing.JFrame {
         panDAO.eliminarPantalon(id);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void rbtnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnSiActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioActionPerformed
+
+    private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
+        int id, precio;
+        String nombre, talla, tela, diceno;
+        Articulo ar;
+        Vestido ves;
+
+        ButtonGroup buttonGroup1 = new ButtonGroup();
+        buttonGroup1.add(rbtnSi);
+        buttonGroup1.add(rbtnNo);
+
+        String DicenoOP = "";
+        if (rbtnSi.isSelected()) {
+            DicenoOP = "Si";
+        } else if (rbtnNo.isSelected()) {
+            DicenoOP = "No";
+        }
+
+        id = Integer.parseInt(txtId.getText());
+        nombre = txtNombre.getText();
+        talla = jBoxTalla.getSelectedItem().toString();
+        tela = jBoxTela.getSelectedItem().toString();
+        diceno = DicenoOP;
+        precio = Integer.parseInt(txtPrecio.getText());
+
+        ar = new Articulo(id, precio, nombre);
+        ArticuloDAO arDAO = new ArticuloDAO();
+        ves = new Vestido(id,tela, talla, diceno);
+        VestidoDAO vesDAO = new VestidoDAO();
+
+        if (arDAO.buscarArticulo(id) == null) {
+            arDAO.ingresarArticulo(ar);
+            vesDAO.ingresarVestido(ves);
+            JOptionPane.showMessageDialog(this, "Vestido ingresado");
+        } else{
+            JOptionPane.showMessageDialog(this, "El id ya fue ingresado por favor ingrese otro");
+        }
+
+    }//GEN-LAST:event_btnIngresoActionPerformed
+
+    private void jBoxTallaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoxTallaActionPerformed
+        // TODO add your handling code here:
+        if (jBoxTalla.getItemCount() == 0) {
+            jBoxTalla.addItem("S");
+            jBoxTalla.addItem("M");
+            jBoxTalla.addItem("L");
+            jBoxTalla.addItem("XL");
+        }
+    }//GEN-LAST:event_jBoxTallaActionPerformed
+
+    private void jBoxTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoxTelaActionPerformed
+        // TODO add your handling code here:
+        if (jBoxTela.getItemCount() == 0) {
+            jBoxTela.addItem("seda cruda");
+            jBoxTela.addItem("satén");
+            jBoxTela.addItem("tafetán");
+            jBoxTela.addItem("terciopelo");
+            jBoxTela.addItem("encaje gasa de seda");
+            jBoxTela.addItem("organza");
+        }
+        
+    }//GEN-LAST:event_jBoxTelaActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngreso;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> jBoxTalla;
+    private javax.swing.JComboBox<String> jBoxTela;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
@@ -155,5 +404,10 @@ public class Ventana_Agregar_Vestido extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenu opSalir;
+    private javax.swing.JRadioButton rbtnNo;
+    private javax.swing.JRadioButton rbtnSi;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }
