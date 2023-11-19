@@ -132,7 +132,7 @@ public class Ventana_Agregar_Polera extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel7.setText("Color:");
 
-        jColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blanco ", "Negro", "Azul", "Marrón", "Gris", "Verde", "Naranja", "Rojo", " ", " " }));
+        jColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blanco", "Negro", "Azul", "Marrón", "Gris", "Verde", "Naranja", "Rojo", "", "" }));
         jColor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

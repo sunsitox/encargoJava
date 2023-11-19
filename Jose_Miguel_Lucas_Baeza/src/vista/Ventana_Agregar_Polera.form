@@ -334,7 +334,7 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="10">
-                <StringItem index="0" value="Blanco "/>
+                <StringItem index="0" value="Blanco"/>
                 <StringItem index="1" value="Negro"/>
                 <StringItem index="2" value="Azul"/>
                 <StringItem index="3" value="Marr&#xf3;n"/>
@@ -342,8 +342,8 @@
                 <StringItem index="5" value="Verde"/>
                 <StringItem index="6" value="Naranja"/>
                 <StringItem index="7" value="Rojo"/>
-                <StringItem index="8" value=" "/>
-                <StringItem index="9" value=" "/>
+                <StringItem index="8" value=""/>
+                <StringItem index="9" value=""/>
               </StringArray>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

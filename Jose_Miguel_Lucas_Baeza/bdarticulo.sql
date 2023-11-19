@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2023 a las 05:27:23
+-- Tiempo de generación: 19-11-2023 a las 10:23:30
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -39,13 +39,23 @@ CREATE TABLE `articulo` (
 --
 
 INSERT INTO `articulo` (`id`, `precio`, `nombre`) VALUES
-(12, 3232, 'cdsc'),
-(34, 24333, 'fds'),
-(93, 24333, 'fds'),
-(123, 3232, 'cdsc'),
-(444, 4000, 'pan'),
-(665, 3232, 'cdsc'),
-(934, 24333, 'fds');
+(1, 21000, 'Pantalones Cargo'),
+(2, 21000, 'Pantalones Cargo'),
+(3, 21000, 'Pantalones Cargo'),
+(4, 24000, 'Pantalón Lino'),
+(5, 24000, 'Pantalón Lino'),
+(6, 24000, 'Pantalón Lino'),
+(7, 29990, 'Polera de Bambú'),
+(8, 19990, 'Polera interior'),
+(9, 19990, 'Polera interior'),
+(10, 19990, 'Polera interior'),
+(11, 29990, 'Polera de Bambú'),
+(12, 15000, 'Vestido de tirantes'),
+(13, 24000, 'Vestidos midi casual'),
+(14, 24000, 'Vestidos midi casual'),
+(15, 23000, 'Vestido Sin Mangas'),
+(16, 23000, 'Vestido Sin Mangas'),
+(17, 23000, 'Vestido Sin Mangas');
 
 -- --------------------------------------------------------
 
@@ -65,10 +75,12 @@ CREATE TABLE `pantalon` (
 --
 
 INSERT INTO `pantalon` (`idPantalon`, `talla`, `material`, `color`) VALUES
-(12, 'M', 'Lana', 'Azul'),
-(123, 'M', 'Lana', 'Azul'),
-(444, 'L', 'Lino', 'Azul'),
-(665, 'M', 'Lana', 'Azul');
+(1, 'M', 'Algodón', 'Azul'),
+(2, 'L', 'Algodón', 'Azul'),
+(3, 'XL', 'Algodón', 'Negro'),
+(4, 'S', 'Lino', 'Negro'),
+(5, 'L', 'Lino', 'Azul'),
+(6, 'XL', 'Lino', 'Blanco');
 
 -- --------------------------------------------------------
 
@@ -82,6 +94,17 @@ CREATE TABLE `polera` (
   `material` varchar(25) NOT NULL,
   `color` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `polera`
+--
+
+INSERT INTO `polera` (`idPolera`, `talla`, `material`, `color`) VALUES
+(7, 'L', 'Bambú', 'Azul'),
+(8, 'S', 'Modal', 'Blanco '),
+(9, 'M', 'Modal', 'Blanco '),
+(10, 'L', 'Modal', 'Negro'),
+(11, 'XL', 'Bambú', 'Gris');
 
 -- --------------------------------------------------------
 
@@ -101,9 +124,12 @@ CREATE TABLE `vestido` (
 --
 
 INSERT INTO `vestido` (`idVestido`, `tela`, `talla`, `diceno`) VALUES
-(34, 'tafetán ', 'M', 'No'),
-(93, 'tafetán ', 'M', 'No'),
-(934, 'tafetán ', 'M', 'No');
+(12, 'Encaje gasa de seda ', 'S', 'Si'),
+(13, 'Seda cruda', 'M', 'No'),
+(14, 'Seda cruda', 'M', 'Si'),
+(15, 'Tafetán ', 'S', 'No'),
+(16, 'Tafetán  ', 'S', 'Si'),
+(17, 'Tafetán ', 'M', 'No');
 
 -- --------------------------------------------------------
 
@@ -125,7 +151,7 @@ CREATE TABLE `vista1` (
 --
 DROP TABLE IF EXISTS `vista1`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista1`  AS  select `art`.`id` AS `Id`,`art`.`nombre` AS `Nombre`,concat('$',format(`art`.`precio`,2)) AS `Precio`,(case when (`art`.`id` = `pol`.`idPolera`) then 'Polera' when (`art`.`id` = `ves`.`idVestido`) then 'Vestido' when (`art`.`id` = `pan`.`idPantalon`) then 'Pantalón' else 'Otro' end) AS `Tipo` from (((`articulo` `art` left join `pantalon` `pan` on((`pan`.`idPantalon` = `art`.`id`))) left join `vestido` `ves` on((`ves`.`idVestido` = `art`.`id`))) left join `polera` `pol` on((`pol`.`idPolera` = `art`.`id`))) order by `art`.`id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista1`  AS  select `art`.`id` AS `Id`,`art`.`nombre` AS `Nombre`,concat('$',format(`art`.`precio`,0,'de_DE')) AS `Precio`,(case when (`art`.`id` = `pol`.`idPolera`) then 'Polera' when (`art`.`id` = `ves`.`idVestido`) then 'Vestido' when (`art`.`id` = `pan`.`idPantalon`) then 'Pantalón' else 'Otro' end) AS `Tipo` from (((`articulo` `art` left join `pantalon` `pan` on((`pan`.`idPantalon` = `art`.`id`))) left join `vestido` `ves` on((`ves`.`idVestido` = `art`.`id`))) left join `polera` `pol` on((`pol`.`idPolera` = `art`.`id`))) order by `art`.`id` ;
 
 --
 -- Índices para tablas volcadas

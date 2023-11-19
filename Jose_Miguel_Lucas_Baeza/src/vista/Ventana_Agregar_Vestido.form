@@ -276,12 +276,12 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
-                <StringItem index="0" value="seda cruda"/>
-                <StringItem index="1" value="sat&#xe9;n"/>
-                <StringItem index="2" value="tafet&#xe1;n "/>
-                <StringItem index="3" value="terciopelo "/>
-                <StringItem index="4" value="encaje gasa de seda "/>
-                <StringItem index="5" value="organza."/>
+                <StringItem index="0" value="Seda cruda"/>
+                <StringItem index="1" value="Sat&#xe9;n"/>
+                <StringItem index="2" value="Tafet&#xe1;n "/>
+                <StringItem index="3" value="Terciopelo "/>
+                <StringItem index="4" value="Encaje gasa de seda "/>
+                <StringItem index="5" value="Organza."/>
               </StringArray>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

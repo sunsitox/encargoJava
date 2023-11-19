@@ -113,7 +113,7 @@ public class Ventana_Agregar_Vestido extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel2.setText("Tela");
 
-        jBoxTela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seda cruda", "satén", "tafetán ", "terciopelo ", "encaje gasa de seda ", "organza." }));
+        jBoxTela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seda cruda", "Satén", "Tafetán ", "Terciopelo ", "Encaje gasa de seda ", "Organza." }));
         jBoxTela.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBoxTela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -380,12 +380,12 @@ public class Ventana_Agregar_Vestido extends javax.swing.JFrame {
     private void jBoxTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoxTelaActionPerformed
         // TODO add your handling code here:
         if (jBoxTela.getItemCount() == 0) {
-            jBoxTela.addItem("seda cruda");
-            jBoxTela.addItem("satén");
-            jBoxTela.addItem("tafetán");
-            jBoxTela.addItem("terciopelo");
-            jBoxTela.addItem("encaje gasa de seda");
-            jBoxTela.addItem("organza");
+            jBoxTela.addItem("Seda cruda");
+            jBoxTela.addItem("Satén");
+            jBoxTela.addItem("Tafetán");
+            jBoxTela.addItem("Terciopelo");
+            jBoxTela.addItem("Encaje gasa de seda");
+            jBoxTela.addItem("Organza");
         }
         
     }//GEN-LAST:event_jBoxTelaActionPerformed
