@@ -1,25 +1,14 @@
-
 package modelo;
 
-public class Pantalon {
-    private int id;
+public class Pantalon extends Articulo {
+
     private String talla, material, color;
 
-    public Pantalon(String talla, String material, String color) {
+    public Pantalon(String talla, String material, String color, int id, int precio, String nombre) {
+        super(id, precio, nombre);
         this.talla = talla;
         this.material = material;
         this.color = color;
-    }
-
-    public Pantalon(int id, String talla, String material, String color) {
-        this.id = id;
-        this.talla = talla;
-        this.material = material;
-        this.color = color;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getTalla() {
@@ -34,10 +23,6 @@ public class Pantalon {
         return color;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setTalla(String talla) {
         this.talla = talla;
     }
@@ -50,6 +35,4 @@ public class Pantalon {
         this.color = color;
     }
 
-    
-    
 }

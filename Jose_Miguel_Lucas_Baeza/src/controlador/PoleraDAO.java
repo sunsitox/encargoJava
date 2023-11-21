@@ -16,13 +16,15 @@ public class PoleraDAO {
         boolean resultado = false;
         try {
             Connection con = Conexion.getConexion();
-            String query = "insert into polera (idPolera,talla,material,color) values(?,?,?,?)";
+            String query = "insert into polera (idPolera,nombre,talla,material,color,precio) values(?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(query);
 
             ps.setInt(1, pol.getId());
-            ps.setString(2, pol.getTalla());
-            ps.setString(3, pol.getMaterial());
-            ps.setString(4, pol.getColor());
+            ps.setString(2, pol.getNombre());
+            ps.setString(3, pol.getTalla());
+            ps.setString(4, pol.getMaterial());
+            ps.setString(5, pol.getColor());
+            ps.setInt(6, pol.getPrecio());
 
             resultado = ps.executeUpdate() == 1;
             ps.close();
@@ -37,13 +39,12 @@ public class PoleraDAO {
         boolean resultado = false;
         try {
             Connection con = Conexion.getConexion();
-            String query = "update polera set idPolera=?,talla=?,material=?,color=? where idPolera=?";
+            String query = "update polera set nombre=?, precio=? where idPolera=?";
             PreparedStatement ps = con.prepareStatement(query);
 
-            ps.setInt(1, pol.getId());
-            ps.setString(2, pol.getTalla());
-            ps.setString(3, pol.getMaterial());
-            ps.setString(4, pol.getColor());
+            ps.setString(1, pol.getNombre());
+            ps.setInt(2, pol.getPrecio());
+            ps.setInt(3, pol.getId());
 
             resultado = ps.executeUpdate() == 1;
             ps.close();
@@ -75,7 +76,7 @@ public class PoleraDAO {
         return resultado;
     }
 
-    public Polera buscarPantalon(int id) {
+    public Polera buscarPolera(int id) {
         Polera pol = null;
         try {
             Connection con = Conexion.getConexion();
@@ -84,7 +85,7 @@ public class PoleraDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                pol = new Polera(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                pol = new Polera(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(2));
             }
             ps.close();
         } catch (SQLException ex) {

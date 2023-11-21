@@ -16,13 +16,15 @@ public class PantalonDAO {
         boolean resultado = false;
         try {
             Connection con = Conexion.getConexion();
-            String query = "insert into pantalon (idPantalon,talla,material,color) values(?,?,?,?)";
+            String query = "insert into pantalon (idPantalon,nombre,talla,material,color,precio) values(?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(query);
 
             ps.setInt(1, pan.getId());
-            ps.setString(2, pan.getTalla());
-            ps.setString(3, pan.getMaterial());
-            ps.setString(4, pan.getColor());
+            ps.setString(2, pan.getNombre());
+            ps.setString(3, pan.getTalla());
+            ps.setString(4, pan.getMaterial());
+            ps.setString(5, pan.getColor());
+            ps.setInt(6, pan.getPrecio());
 
             resultado = ps.executeUpdate() == 1;
             ps.close();
@@ -37,13 +39,12 @@ public class PantalonDAO {
         boolean resultado = false;
         try {
             Connection con = Conexion.getConexion();
-            String query = "update pantalon set idPantalon=?,talla=?,material=?,color=? where idPantalon=?";
+            String query = "update pantalon set nombre=?, precio=? where idPantalon=?";
             PreparedStatement ps = con.prepareStatement(query);
 
-            ps.setInt(1, pan.getId());
-            ps.setString(2, pan.getTalla());
-            ps.setString(3, pan.getMaterial());
-            ps.setString(4, pan.getColor());
+            ps.setString(1, pan.getNombre());
+            ps.setInt(2, pan.getPrecio());
+            ps.setInt(3, pan.getId());
 
             resultado = ps.executeUpdate() == 1;
             ps.close();
@@ -84,7 +85,8 @@ public class PantalonDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                pan = new Pantalon(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                
+                pan = new Pantalon(rs.getString(5), rs.getString(3), rs.getString(4), rs.getInt(1), rs.getInt(6), rs.getString(2));
             }
             ps.close();
         } catch (SQLException ex) {

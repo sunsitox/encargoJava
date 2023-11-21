@@ -5,8 +5,9 @@
  */
 package vista;
 
-import controlador.ArticuloDAO;
+
 import controlador.PantalonDAO;
+import controlador.PoleraDAO;
 import controlador.VestidoDAO;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
@@ -331,7 +332,8 @@ public class Ventana_Agregar_Vestido extends javax.swing.JFrame {
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
         int id, precio;
         String nombre, talla, tela, diceno;
-        Articulo ar;
+        PantalonDAO panDAO = new PantalonDAO();
+        PoleraDAO polDAO = new PoleraDAO();
         Vestido ves;
 
         ButtonGroup buttonGroup1 = new ButtonGroup();
@@ -352,13 +354,12 @@ public class Ventana_Agregar_Vestido extends javax.swing.JFrame {
         diceno = DicenoOP;
         precio = Integer.parseInt(txtPrecio.getText());
 
-        ar = new Articulo(id, precio, nombre);
-        ArticuloDAO arDAO = new ArticuloDAO();
-        ves = new Vestido(id,tela, talla, diceno);
+
+        ves = new Vestido(id, precio, nombre, tela, talla, diceno);
         VestidoDAO vesDAO = new VestidoDAO();
 
-        if (arDAO.buscarArticulo(id) == null) {
-            arDAO.ingresarArticulo(ar);
+        if (polDAO.buscarPolera(id) == null && vesDAO.buscarVestido(id) == null && panDAO.buscarPantalon(id) == null) {
+
             vesDAO.ingresarVestido(ves);
             JOptionPane.showMessageDialog(this, "Vestido ingresado");
         } else{

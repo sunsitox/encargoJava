@@ -5,7 +5,6 @@
  */
 package vista;
 
-import controlador.ArticuloDAO;
 import controlador.Conexion;
 import controlador.PantalonDAO;
 import controlador.PoleraDAO;
@@ -17,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Articulo;
 import modelo.Pantalon;
+import modelo.Polera;
 import modelo.Vestido;
 
 /**
@@ -438,14 +438,14 @@ public class Ventana_Mostrar extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         int id = 0;
-        ArticuloDAO arDAO = new ArticuloDAO();
+        PoleraDAO polDAO = new PoleraDAO();
+        VestidoDAO vesDAO = new VestidoDAO();
         PantalonDAO panDAO = new PantalonDAO();
         String idString = JOptionPane.showInputDialog("Ingrese el id del Pantalon a eliminar");
         id = Integer.parseInt(idString);
-        if (arDAO.buscarArticulo(id) == null) {
+        if (polDAO.buscarPolera(id) == null && vesDAO.buscarVestido(id) == null && panDAO.buscarPantalon(id) == null) {
             JOptionPane.showMessageDialog(this, "Articulo no encontrado");
         } else {
-            arDAO.eliminarAlumno(id);
             panDAO.eliminarPantalon(id);
             JOptionPane.showMessageDialog(this, "Articulo Eliminado");
         }
@@ -453,16 +453,17 @@ public class Ventana_Mostrar extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         int id = 0;
-        ArticuloDAO arDAO = new ArticuloDAO();
+        PoleraDAO polDAO = new PoleraDAO();
         VestidoDAO vesDAO = new VestidoDAO();
+        PantalonDAO panDAO = new PantalonDAO();
         String idString = JOptionPane.showInputDialog("Ingrese el id del Vestido a eliminar");
 
         id = Integer.parseInt(idString);
-        if (arDAO.buscarArticulo(id) == null) {
+        if (polDAO.buscarPolera(id) == null && vesDAO.buscarVestido(id) == null && panDAO.buscarPantalon(id) == null) {
             JOptionPane.showMessageDialog(this, "Articulo no encontrado");
         } else {
             //JOptionPane.showMessageDialog(this, );
-            arDAO.eliminarAlumno(id);
+
             vesDAO.eliminarVestido(id);
             JOptionPane.showMessageDialog(this, "Articulo Eliminado");
         }
@@ -470,15 +471,16 @@ public class Ventana_Mostrar extends javax.swing.JFrame {
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         int id = 0;
-        ArticuloDAO arDAO = new ArticuloDAO();
         PoleraDAO polDAO = new PoleraDAO();
+        VestidoDAO vesDAO = new VestidoDAO();
+        PantalonDAO panDAO = new PantalonDAO();
         String idString = JOptionPane.showInputDialog("Ingrese el id del Polera a eliminar");
 
         id = Integer.parseInt(idString);
-        if (arDAO.buscarArticulo(id) == null) {
+        if (polDAO.buscarPolera(id) == null && vesDAO.buscarVestido(id) == null && panDAO.buscarPantalon(id) == null) {
             JOptionPane.showMessageDialog(this, "Articulo no encontrado");
         } else {
-            arDAO.eliminarAlumno(id);
+
             polDAO.eliminarPolera(id);
             JOptionPane.showMessageDialog(this, "Articulo Eliminado");
         }
@@ -575,17 +577,36 @@ public class Ventana_Mostrar extends javax.swing.JFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         DefaultTableModel dtm = (DefaultTableModel) jtVer1.getModel();
         int fila = jtVer1.getSelectedRow();
+
         if (fila == -1) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar el Articulo que desea modificar");
         } else {
-            int id = Integer.parseInt(String.valueOf(jtVer1.getValueAt(fila, 0)));
-            String nombre = String.valueOf(jtVer1.getValueAt(fila, 1));
-            int precio = Integer.parseInt(String.valueOf(jtVer1.getValueAt(fila, 2)));
+            try {
+                int id = Integer.parseInt(String.valueOf(jtVer1.getValueAt(fila, 0)));
+                String nombre = String.valueOf(jtVer1.getValueAt(fila, 1));
+                int precio = Integer.parseInt(String.valueOf(jtVer1.getValueAt(fila, 2)));
 
-            Articulo alu = new Articulo(id, precio, nombre);
-            ArticuloDAO artDAO = new ArticuloDAO();
-            artDAO.modificarArticulo(alu);
-            JOptionPane.showMessageDialog(this, "Articulo modificado");
+                JOptionPane.showMessageDialog(this, "Articulo modificado");
+
+                // Aquí deberías hacer algo con las instancias de Polera, Vestido, Pantalon, y sus respectivos DAOs
+                // Por ejemplo, podrías llamar a los métodos correspondientes para modificar esos elementos en la base de datos
+                // Modificar Polera
+                Polera pol = new Polera(id, "", "", "", precio, nombre);
+                PoleraDAO polDAO = new PoleraDAO();
+                polDAO.modificarPolera(pol);
+
+                // Instancia de Vestido
+                Vestido ves = new Vestido(id, precio, nombre, "", "", "");
+                VestidoDAO vesDAO = new VestidoDAO();
+                vesDAO.modificarVestido(ves);
+
+                // Modificar Pantalon
+                Pantalon pan = new Pantalon("", "", "", id, precio, nombre);
+                PantalonDAO panDAO = new PantalonDAO();
+                panDAO.modificarPantalon(pan);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Error al convertir datos. Asegúrate de ingresar valores válidos.");
+            }
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -600,26 +621,43 @@ public class Ventana_Mostrar extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         limpiarTabla();
-        ArticuloDAO colo = new ArticuloDAO();
+        PoleraDAO polDAO = new PoleraDAO();
+        VestidoDAO vesDAO = new VestidoDAO();
+        PantalonDAO panDAO = new PantalonDAO();
         String idText = txtID.getText();
+
         if (idText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese un ID válido");
             return;
         }
-        int id = Integer.parseInt(idText);
-        try {
-            Articulo a = colo.buscarArticulo(id);
 
-            if (a == null)//No existe
-            {
+        int id = Integer.parseInt(idText);
+
+        try {
+            Polera po = polDAO.buscarPolera(id);
+            Vestido ve = vesDAO.buscarVestido(id);
+            Pantalon pa = panDAO.buscarPantalon(id);
+
+            if (po == null && ve == null && pa == null) { // No existe
                 JOptionPane.showMessageDialog(this, "ID no encontrado o no ingresado");
-            } else //Existe
-            {
+            } else { // Existe
                 DefaultTableModel dtm = (DefaultTableModel) jtVer1.getModel();
                 String[] datos = new String[3];
-                datos[0] = String.valueOf(a.getId());
-                datos[1] = a.getNombre();
-                datos[2] = String.valueOf(a.getPrecio());
+
+                // Dependiendo de cuál objeto se encontró, asignar valores correspondientes
+                if (po != null) {
+                    datos[0] = String.valueOf(po.getId());
+                    datos[1] = po.getNombre();
+                    datos[2] = String.valueOf(po.getPrecio());
+                } else if (ve != null) {
+                    datos[0] = String.valueOf(ve.getId());
+                    datos[1] = ve.getNombre();
+                    datos[2] = String.valueOf(ve.getPrecio());
+                } else if (pa != null) {
+                    datos[0] = String.valueOf(pa.getId());
+                    datos[1] = pa.getNombre();
+                    datos[2] = String.valueOf(pa.getPrecio());
+                }
 
                 dtm.addRow(datos);
                 jtVer1.setModel(dtm);

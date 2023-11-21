@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2023 a las 10:23:30
+-- Tiempo de generación: 21-11-2023 a las 08:04:36
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -25,62 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `articulo`
---
-
-CREATE TABLE `articulo` (
-  `id` int(25) NOT NULL,
-  `precio` int(7) NOT NULL,
-  `nombre` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `articulo`
---
-
-INSERT INTO `articulo` (`id`, `precio`, `nombre`) VALUES
-(1, 21000, 'Pantalones Cargo'),
-(2, 21000, 'Pantalones Cargo'),
-(3, 21000, 'Pantalones Cargo'),
-(4, 24000, 'Pantalón Lino'),
-(5, 24000, 'Pantalón Lino'),
-(6, 24000, 'Pantalón Lino'),
-(7, 29990, 'Polera de Bambú'),
-(8, 19990, 'Polera interior'),
-(9, 19990, 'Polera interior'),
-(10, 19990, 'Polera interior'),
-(11, 29990, 'Polera de Bambú'),
-(12, 15000, 'Vestido de tirantes'),
-(13, 24000, 'Vestidos midi casual'),
-(14, 24000, 'Vestidos midi casual'),
-(15, 23000, 'Vestido Sin Mangas'),
-(16, 23000, 'Vestido Sin Mangas'),
-(17, 23000, 'Vestido Sin Mangas');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `pantalon`
 --
 
 CREATE TABLE `pantalon` (
   `idPantalon` int(25) NOT NULL,
+  `nombre` varchar(25) NOT NULL,
   `talla` varchar(3) NOT NULL,
   `material` varchar(25) NOT NULL,
-  `color` varchar(25) NOT NULL
+  `color` varchar(25) NOT NULL,
+  `precio` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `pantalon`
 --
 
-INSERT INTO `pantalon` (`idPantalon`, `talla`, `material`, `color`) VALUES
-(1, 'M', 'Algodón', 'Azul'),
-(2, 'L', 'Algodón', 'Azul'),
-(3, 'XL', 'Algodón', 'Negro'),
-(4, 'S', 'Lino', 'Negro'),
-(5, 'L', 'Lino', 'Azul'),
-(6, 'XL', 'Lino', 'Blanco');
+INSERT INTO `pantalon` (`idPantalon`, `nombre`, `talla`, `material`, `color`, `precio`) VALUES
+(1, 'Pantalones Cargo', 'L', 'Algodón', 'Negro', 21000),
+(2, 'Pantalones Cargo', 'L', 'Algodón', 'Azul', 21000),
+(3, 'Pantalones Cargo', 'XL', 'Algodón', 'Negro', 21000),
+(4, 'Pantalón Lino', 'S', 'Lino', 'Negro', 24000),
+(5, 'Pantalón Lino', 'L', 'Lino', 'Azul', 24000),
+(6, 'Pantalón Lino', 'XL', 'Lino', 'Blanco', 24000);
 
 -- --------------------------------------------------------
 
@@ -90,21 +57,23 @@ INSERT INTO `pantalon` (`idPantalon`, `talla`, `material`, `color`) VALUES
 
 CREATE TABLE `polera` (
   `idPolera` int(25) NOT NULL,
+  `nombre` varchar(25) NOT NULL,
   `talla` varchar(25) NOT NULL,
   `material` varchar(25) NOT NULL,
-  `color` varchar(25) NOT NULL
+  `color` varchar(25) NOT NULL,
+  `precio` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `polera`
 --
 
-INSERT INTO `polera` (`idPolera`, `talla`, `material`, `color`) VALUES
-(7, 'L', 'Bambú', 'Azul'),
-(8, 'S', 'Modal', 'Blanco '),
-(9, 'M', 'Modal', 'Blanco '),
-(10, 'L', 'Modal', 'Negro'),
-(11, 'XL', 'Bambú', 'Gris');
+INSERT INTO `polera` (`idPolera`, `nombre`, `talla`, `material`, `color`, `precio`) VALUES
+(7, 'Polera de Bambú', 'L', 'Bambú', 'Azul', 29990),
+(8, 'Polera interior', 'S', 'Modal', 'Blanco ', 19990),
+(9, 'Polera interior', 'M', 'Modal', 'Blanco ', 19990),
+(10, 'Polera interior', 'L', 'Modal', 'Negro', 19990),
+(11, 'Polera interior', 'XL', 'Bambú', 'Gris', 19990);
 
 -- --------------------------------------------------------
 
@@ -114,22 +83,24 @@ INSERT INTO `polera` (`idPolera`, `talla`, `material`, `color`) VALUES
 
 CREATE TABLE `vestido` (
   `idVestido` int(25) NOT NULL,
+  `nombre` varchar(25) NOT NULL,
   `tela` varchar(25) NOT NULL,
   `talla` varchar(3) NOT NULL,
-  `diceno` varchar(25) NOT NULL
+  `diceno` varchar(25) NOT NULL,
+  `precio` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `vestido`
 --
 
-INSERT INTO `vestido` (`idVestido`, `tela`, `talla`, `diceno`) VALUES
-(12, 'Encaje gasa de seda ', 'S', 'Si'),
-(13, 'Seda cruda', 'M', 'No'),
-(14, 'Seda cruda', 'M', 'Si'),
-(15, 'Tafetán ', 'S', 'No'),
-(16, 'Tafetán  ', 'S', 'Si'),
-(17, 'Tafetán ', 'M', 'No');
+INSERT INTO `vestido` (`idVestido`, `nombre`, `tela`, `talla`, `diceno`, `precio`) VALUES
+(12, 'Vestido de tirantes', 'Encaje gasa de seda ', 'S', 'Si', 15000),
+(13, 'Vestidos midi casual', 'Seda cruda', 'M', 'No', 24000),
+(14, 'Vestidos midi casual', 'Seda cruda', 'M', 'Si', 24000),
+(15, 'Vestido Sin Mangas', 'Tafetán ', 'S', 'No', 23000),
+(16, 'Vestido Sin Mangas', 'Tafetán  ', 'S', 'Si', 23000),
+(17, 'Vestido Sin Mangas', 'Tafetán ', 'M', 'No', 23000);
 
 -- --------------------------------------------------------
 
@@ -151,17 +122,11 @@ CREATE TABLE `vista1` (
 --
 DROP TABLE IF EXISTS `vista1`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista1`  AS  select `art`.`id` AS `Id`,`art`.`nombre` AS `Nombre`,concat('$',format(`art`.`precio`,0,'de_DE')) AS `Precio`,(case when (`art`.`id` = `pol`.`idPolera`) then 'Polera' when (`art`.`id` = `ves`.`idVestido`) then 'Vestido' when (`art`.`id` = `pan`.`idPantalon`) then 'Pantalón' else 'Otro' end) AS `Tipo` from (((`articulo` `art` left join `pantalon` `pan` on((`pan`.`idPantalon` = `art`.`id`))) left join `vestido` `ves` on((`ves`.`idVestido` = `art`.`id`))) left join `polera` `pol` on((`pol`.`idPolera` = `art`.`id`))) order by `art`.`id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista1`  AS  select `pantalon`.`idPantalon` AS `Id`,`pantalon`.`nombre` AS `Nombre`,concat('$',format(`pantalon`.`precio`,0,'de_DE')) AS `Precio`,'Pantalon' AS `Tipo` from `pantalon` union all select `polera`.`idPolera` AS `idPolera`,`polera`.`nombre` AS `nombre`,concat('$',format(`polera`.`precio`,0,'de_DE')) AS `CONCAT('$', FORMAT(precio, 0, 'de_DE'))`,'Polera' AS `Polera` from `polera` union all select `vestido`.`idVestido` AS `idVestido`,`vestido`.`nombre` AS `nombre`,concat('$',format(`vestido`.`precio`,0,'de_DE')) AS `CONCAT('$', FORMAT(precio, 0, 'de_DE'))`,'Vestido' AS `Vestido` from `vestido` order by 1 ;
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `articulo`
---
-ALTER TABLE `articulo`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `pantalon`
@@ -180,28 +145,6 @@ ALTER TABLE `polera`
 --
 ALTER TABLE `vestido`
   ADD PRIMARY KEY (`idVestido`);
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `pantalon`
---
-ALTER TABLE `pantalon`
-  ADD CONSTRAINT `pantalon_articulo_fk` FOREIGN KEY (`idPantalon`) REFERENCES `articulo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `polera`
---
-ALTER TABLE `polera`
-  ADD CONSTRAINT `polera_articulo_fk` FOREIGN KEY (`idPolera`) REFERENCES `articulo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `vestido`
---
-ALTER TABLE `vestido`
-  ADD CONSTRAINT `vestido_articulo_fk` FOREIGN KEY (`idVestido`) REFERENCES `articulo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

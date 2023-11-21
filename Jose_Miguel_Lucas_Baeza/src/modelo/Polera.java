@@ -1,19 +1,14 @@
 package modelo;
 
-public class Polera {
+public class Polera extends Articulo {
 
-    private int id;
     private String talla, material, color;
 
-    public Polera(int id, String talla, String material, String color) {
-        this.id = id;
+    public Polera(int id, String talla, String material, String color, int precio, String nombre) {
+        super(id, precio, nombre);
         this.talla = talla;
         this.material = material;
         this.color = color;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getTalla() {
@@ -26,10 +21,6 @@ public class Polera {
 
     public String getColor() {
         return color;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setTalla(String talla) {

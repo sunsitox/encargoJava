@@ -1,19 +1,14 @@
 package modelo;
 
-public class Vestido {
+public class Vestido extends Articulo {
 
-    private int id;
-    private String tela, talla, diceno;
+    private String tela, talla, diseno;
 
-    public Vestido(int id, String tela, String talla, String diceno) {
-        this.id = id;
+    public Vestido(int id, int precio, String nombre, String tela, String talla, String diseno) {
+        super(id, precio, nombre);
         this.tela = tela;
         this.talla = talla;
-        this.diceno = diceno;
-    }
-
-    public int getId() {
-        return id;
+        this.diseno = diseno;
     }
 
     public String getTela() {
@@ -24,12 +19,8 @@ public class Vestido {
         return talla;
     }
 
-    public String getDiceno() {
-        return diceno;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public String getDiseno() {
+        return diseno;
     }
 
     public void setTela(String tela) {
@@ -40,8 +31,7 @@ public class Vestido {
         this.talla = talla;
     }
 
-    public void setDiceno(String diceno) {
-        this.diceno = diceno;
+    public void setDiseno(String diseno) {
+        this.diseno = diseno;
     }
-
 }

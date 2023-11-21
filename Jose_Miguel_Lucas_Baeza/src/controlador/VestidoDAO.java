@@ -16,14 +16,16 @@ public class VestidoDAO {
         boolean resultado = false;
         try {
             Connection con = Conexion.getConexion();
-            String query = "insert into vestido (idVestido,tela,talla,diceno) values(?,?,?,?)";
+            String query = "insert into vestido (idVestido,nombre,tela,talla,diceno,precio) values(?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(query);
 
             ps.setInt(1, ves.getId());
-            ps.setString(2, ves.getTela());
-            ps.setString(3, ves.getTalla());
-            ps.setString(4, ves.getDiceno());
-
+            ps.setString(2, ves.getNombre());
+            ps.setString(3, ves.getTela());
+            ps.setString(4, ves.getTalla());
+            ps.setString(5, ves.getDiseno());
+            ps.setInt(6, ves.getPrecio());
+            
             resultado = ps.executeUpdate() == 1;
             ps.close();
 
@@ -37,20 +39,17 @@ public class VestidoDAO {
         boolean resultado = false;
         try {
             Connection con = Conexion.getConexion();
-            String query = "update vestido set idVestido=?,tela=?,talla=?,diceno=? where idVestido=?";
+            String query = "update vestido set nombre=?, precio=? where idVestido=?";
             PreparedStatement ps = con.prepareStatement(query);
 
-            ps.setInt(1, ves.getId());
-            ps.setString(2, ves.getTela());
-            ps.setString(3, ves.getTalla());
-            ps.setString(4, ves.getDiceno());
+            ps.setString(1, ves.getNombre());
+            ps.setInt(2, ves.getPrecio());
+            ps.setInt(3, ves.getId()); // Corregido el orden de los parámetros
 
             resultado = ps.executeUpdate() == 1;
             ps.close();
 
-        } catch (SQLException ex) {
-            Logger.getLogger(PantalonDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(PantalonDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultado;
@@ -75,7 +74,7 @@ public class VestidoDAO {
         return resultado;
     }
 
-    public Vestido buscarPantalon(int id) {
+    public Vestido buscarVestido(int id) {
         Vestido ves = null;
         try {
             Connection con = Conexion.getConexion();
@@ -84,7 +83,7 @@ public class VestidoDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                ves = new Vestido(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                ves = new Vestido(rs.getInt(1), rs.getInt(6), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
             }
             ps.close();
         } catch (SQLException ex) {

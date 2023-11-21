@@ -5,8 +5,10 @@
  */
 package vista;
 
-import controlador.ArticuloDAO;
+
 import controlador.PantalonDAO;
+import controlador.PoleraDAO;
+import controlador.VestidoDAO;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -335,7 +337,8 @@ public class Ventana_Agregar_Pantalon extends javax.swing.JFrame {
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
         int id, precio;
         String nombre, talla, material, color;
-        Articulo ar;
+        PoleraDAO polDAO = new PoleraDAO();
+        VestidoDAO vesDAO = new VestidoDAO();
         Pantalon pan;
 
         ButtonGroup buttonGroupColores = new ButtonGroup();
@@ -359,19 +362,17 @@ public class Ventana_Agregar_Pantalon extends javax.swing.JFrame {
         color = colorSeleccionado;
         precio = Integer.parseInt(txtPrecio.getText());
 
-        ar = new Articulo(id, precio, nombre);
-        ArticuloDAO arDAO = new ArticuloDAO();
-        pan = new Pantalon(id, talla, material, color);
+        pan = new Pantalon(talla, material, color, id, precio, nombre);
         PantalonDAO panDAO = new PantalonDAO();
 
-        if (arDAO.buscarArticulo(id) == null) {
-            arDAO.ingresarArticulo(ar);
+        if (polDAO.buscarPolera(id) == null && vesDAO.buscarVestido(id) == null && panDAO.buscarPantalon(id) == null) {
+
             panDAO.ingresarPantalon(pan);
             JOptionPane.showMessageDialog(this, "Pantalon ingresado");
-        } else{
+        } else {
             JOptionPane.showMessageDialog(this, "El id ya fue ingresado por favor ingrese otro");
         }
-        
+
     }//GEN-LAST:event_btnIngresoActionPerformed
 
     private void rbtAzulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtAzulActionPerformed

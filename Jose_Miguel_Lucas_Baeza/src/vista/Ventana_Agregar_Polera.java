@@ -5,9 +5,10 @@
  */
 package vista;
 
-import controlador.ArticuloDAO;
+
 import controlador.PantalonDAO;
 import controlador.PoleraDAO;
+import controlador.VestidoDAO;
 import javax.swing.JOptionPane;
 import modelo.Articulo;
 import modelo.Polera;
@@ -316,8 +317,9 @@ public class Ventana_Agregar_Polera extends javax.swing.JFrame {
     private void btnIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoActionPerformed
         int id, precio;
         String nombre, talla, material, color;
-        Articulo ar;
         Polera pol;
+        VestidoDAO vesDAO = new VestidoDAO();
+        PantalonDAO panDAO = new PantalonDAO();
 
         id = Integer.parseInt(txtId.getText());
         nombre = txtNombre.getText();
@@ -326,13 +328,11 @@ public class Ventana_Agregar_Polera extends javax.swing.JFrame {
         color = jColor.getSelectedItem().toString();
         precio = Integer.parseInt(txtPrecio.getText());
 
-        ar = new Articulo(id, precio, nombre);
-        ArticuloDAO arDAO = new ArticuloDAO();
-        pol = new Polera(id, talla, material, color);
+
+        pol = new Polera(id, talla, material, color, precio, nombre);
         PoleraDAO polDAO = new PoleraDAO();
 
-        if (arDAO.buscarArticulo(id) == null) {
-            arDAO.ingresarArticulo(ar);
+        if (polDAO.buscarPolera(id) == null && vesDAO.buscarVestido(id) == null && panDAO.buscarPantalon(id) == null) {
             polDAO.ingresarPolera(pol);
             JOptionPane.showMessageDialog(this, "Polera ingresada");
         } else {

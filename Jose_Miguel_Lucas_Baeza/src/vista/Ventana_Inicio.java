@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
-import controlador.ArticuloDAO;
 import controlador.Conexion;
 import controlador.PantalonDAO;
 import controlador.PoleraDAO;
@@ -31,10 +25,9 @@ public class Ventana_Inicio extends javax.swing.JFrame {
      */
     public Ventana_Inicio() {
         initComponents();
-        ArticuloDAO artDAO = new ArticuloDAO();
         PoleraDAO polDAO = new PoleraDAO();
         PantalonDAO panDAO = new PantalonDAO();
-        VestidoDAO vesDAO =new VestidoDAO();
+        VestidoDAO vesDAO = new VestidoDAO();
         // Crear un objeto Timer que se ejecuta cada 1000 milisegundos (o 1 segundo)
         Timer timer = new Timer(1000, null);
 
@@ -43,7 +36,7 @@ public class Ventana_Inicio extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Realizar la consulta a la base de datos y obtener el número de artículos
-                int art = artDAO.contarArticulos(); // Reemplaza esto con tu propio método para obtener los datos de la base de datos
+                int art = polDAO.contarPolera() + panDAO.contarPantalon() + vesDAO.contarVestido();// Reemplaza esto con tu propio método para obtener los datos de la base de datos
                 int pol = polDAO.contarPolera();
                 int pan = panDAO.contarPantalon();
                 int ves = vesDAO.contarVestido();

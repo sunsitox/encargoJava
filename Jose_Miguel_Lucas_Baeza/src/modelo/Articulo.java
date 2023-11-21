@@ -1,8 +1,7 @@
-
 package modelo;
 
-
 public class Articulo {
+
     private int id, precio;
     private String nombre;
 
@@ -10,10 +9,6 @@ public class Articulo {
         this.id = id;
         this.precio = precio;
         this.nombre = nombre;
-    }
-
-    public Articulo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId() {
@@ -39,6 +34,5 @@ public class Articulo {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
 }
